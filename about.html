@@ -33,6 +33,8 @@
                 <li><a href="about.html" class="active">Sobre</a></li>
                 <li><a href="contact.html">Contato</a></li>
                 <li><a href="store.html">Loja</a></li>
+                <li><a href="profile.html">Meu Perfil</a></li>
+                <li><button id="open-auth-modal" class="auth-nav-btn">Login / Cadastro</button></li>
             </ul>
         </nav>
     </header>
@@ -53,7 +55,7 @@
                     </div>
 
                     <div class="social-links">
-                        <a href="https://www.instagram.com/conrado_es/" target="_blank"
+                        <a href="https://www.instagram.com/matheusconrado_es/" target="_blank"
                             class="social-icon instagram">
                             <img src="assets/img/instagram.png" alt="Instagram">
                         </a>
@@ -96,9 +98,31 @@
         <img src="assets/img/whatsapp.png" alt="WhatsApp">
     </a>
 
-    <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="auth-title">Faça Login</h2>
+            
+            <form id="auth-form">
+                <input type="email" id="auth-email" placeholder="E-mail" required>
+                <input type="password" id="auth-password" placeholder="Senha" required>
+                
+                <button type="submit" id="auth-submit-btn">Entrar</button>
+            </form>
 
+            <p class="auth-switch">
+                Ainda não tem conta? <a href="#" id="switch-to-signup">Cadastre-se</a>
+            </p>
+            <p class="auth-switch signup-only" style="display:none;">
+                Já tem conta? <a href="#" id="switch-to-login">Faça Login</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <script src="assets/js/auth.js"></script> 
+    
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
@@ -130,6 +154,5 @@
         </div>
     </footer>
 </body>
-
 
 </html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Perfil | Conexão Espanha</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <meta name="description"
+        content="Painel de usuário da Conexão Espanha. Gerencie seu perfil e planeje sua viagem." />
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h1 class="logo">Conexão Espanha</h1>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="services.html">Serviços</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="contact.html">Contato</a></li>
+                <li><a href="store.html">Loja</a></li>
+                <li><a href="profile.html" class="active-profile-btn">Meu Perfil</a></li>
+                <li><button id="logout-btn" class="auth-nav-btn">Sair</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-page">
+            <h2>Bem-vindo(a) ao seu Painel, <span id="user-email-display" style="font-weight: bold;"></span></h2>
+            <p>Gerencie suas informações pessoais e planeje sua jornada para a Espanha.</p>
+
+            <div class="profile-layout-grid">
+
+                <aside class="profile-sidebar">
+                    <button class="sidebar-button active" data-tab="info">
+                        Informações Pessoais
+                    </button>
+                    <button class="sidebar-button" data-tab="viagem">
+                        Plano de Viagem
+                    </button>
+                </aside>
+
+                <div class="profile-content-area">
+
+                    <div id="info-tab" class="tab-content active">
+                        <h3>Minhas Informações</h3>
+                        
+                        <form id="profile-form" class="profile-form-grid">
+
+                            <div>
+                                <label for="profile-first-name">Nome</label>
+                                <input type="text" id="profile-first-name" placeholder="Seu primeiro nome" required>
+                            </div>
+                            
+                            <div>
+                                <label for="profile-last-name">Sobrenome</label>
+                                <input type="text" id="profile-last-name" placeholder="Seu sobrenome" required>
+                            </div>
+
+                            <div>
+                                <label for="profile-email">Email (não pode ser alterado)</label>
+                                <input type="email" id="profile-email" disabled>
+                            </div>
+
+                            <div>
+                                <label for="profile-phone">Telefone/WhatsApp</label>
+                                <input type="text" id="profile-phone" placeholder="Ex: +55 51 9xxxx-xxxx">
+                            </div>
+
+                            <label for="profile-address">Endereço (opcional)</label>
+                            <textarea id="profile-address" rows="3"
+                                placeholder="Rua, Número, Cidade, País"></textarea>
+
+                            <div id="profile-status"></div>
+                            <button type="submit" id="save-profile-btn" class="btn">Salvar Informações</button>
+                        </form>
+                    </div> 
+                    <div id="viagem-tab" class="tab-content">
+                        <h3>Planejamento da Imigração</h3>
+
+                        <div id="travel-date-section">
+                            <h4>1. Data Prevista para Espanha</h4>
+                            <p>Informe a data que você planeja chegar para iniciarmos sua contagem regressiva!</p>
+                            <label for="profile-travel-date">Data de Viagem</label>
+                            <input type="date" id="profile-travel-date">
+                            <button id="set-travel-date-btn" class="btn">Atualizar Data</button>
+
+                            <div id="countdown-display" class="countdown-box">
+                                </div>
+                        </div>
+
+                        <div id="checklist-full-section" style="display: none;">
+                            <h4>2. Checklist para a Viagem</h4>
+                            <p>Organize suas tarefas (Documentos, Passagens, Hospedagem etc.)</p>
+
+                            <div class="checklist-add-form">
+                                <input type="text" id="checklist-input"
+                                    placeholder="Nova tarefa (Ex: Emitir Passaporte)">
+                                <button id="add-checklist-item-btn" class="btn">Adicionar</button>
+                            </div>
+
+                            <ul id="checklist-list" class="checklist-list">
+                                </ul>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="https://wa.me/+5551993507414" target="_blank" class="whatsapp-float">
+        <img src="assets/img/whatsapp.png" alt="WhatsApp">
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="assets/js/profile.js"></script>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>Conexão Espanha</h3>
+                <p>Facilitando sua jornada de imigração para a Espanha com suporte local e experiência real.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Navegação Rápida</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="services.html">Serviços</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                    <li><a href="store.html">Loja</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contato</h3>
+                <p>📍 Base Principal: Elche, Espanha</p>
+                <p>📧 Email: conradoferreira102@gmail.com</p>
+                <p>📞 WhatsApp: +55 51 99350-7414</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2025 Conexão Espanha | Todos os direitos reservados.
+        </div>
+    </footer>
+
+</body>
+
+</html>
