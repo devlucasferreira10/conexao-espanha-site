@@ -1,425 +1,360 @@
 /* ========================================= */
-/* 1. REGRAS GERAIS E BASE                   */
+/* 1. VARIÁVEIS E CONFIGURAÇÕES BASE         */
 /* ========================================= */
+:root {
+    --primary-red: #AA151B;    /* Vermelho da bandeira */
+    --accent-red: #e63946;     /* Vermelho de destaque */
+    --spain-yellow: #F1BF00;   /* Amarelo Gualda */
+    --text-dark: #333333;
+    --text-light: #555555;
+    --bg-light: #f5f5f5;
+    --white: #ffffff;
+    --success: #2a9d8f;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: 0.3s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-    background: #f5f5f5;
-    color: #333;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
 }
 
-/* Container de Largura Máxima */
-.contact-container {
-    padding: 60px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-/* Botões Padrão (.btn) */
+/* ========================================= */
+/* 2. COMPONENTES REUTILIZÁVEIS (BOTÕES)     */
+/* ========================================= */
 .btn {
-    padding: 15px 25px;
-    background: #e63946;
-    color: white;
+    padding: 12px 25px;
     border-radius: 8px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bold;
     display: inline-block;
-    margin-top: 10px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: var(--transition);
+    text-align: center;
 }
-.btn:hover {
-    background-color: #d12f3b;
+
+.btn-primary {
+    background: var(--accent-red);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--primary-red);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--text-dark);
+    color: var(--white);
+}
+
+.btn-buy {
+    background-color: var(--success) !important;
+    width: 100%;
+}
+
+.small-btn {
+    background: var(--white);
+    color: var(--accent-red);
+    padding: 8px 15px;
+    font-size: 14px;
 }
 
 /* ========================================= */
-/* 2. NAVEGAÇÃO E FLUTUANTES                 */
+/* 3. NAVEGAÇÃO                              */
 /* ========================================= */
-
-/* Navegação Principal (Header) */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background: #AA151B; /* Vermelho Escuro da Bandeira */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    padding: 15px 5%;
+    background: var(--primary-red);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.logo {
-    font-size: 24px;
-    color: #fffffffb; /* Amarelo (Gualda) */
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: white; /* Texto em branco */
+.logo { 
+    font-size: 22px; 
+    color: var(--white); 
     font-weight: bold;
-    transition: color 0.3s;
 }
 
-nav a.active,
-nav a:hover,
-nav a.active-profile-btn { /* Estilo para o link do perfil ativo */
-    color: #F1BF00; /* Destaque com o Amarelo */
+nav ul { 
+    list-style: none; 
+    display: flex; 
+    gap: 20px; 
+    align-items: center; 
 }
 
-/* Botão de Login/Cadastro/Sair */
+nav a { 
+    text-decoration: none; 
+    color: var(--white); 
+    font-weight: 500;
+    font-size: 15px;
+    transition: var(--transition);
+}
+
+nav a:hover, nav a.active { 
+    color: var(--spain-yellow); 
+}
+
 .auth-nav-btn {
-    background-color: #e63946; /* Sua cor principal */
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: var(--accent-red);
+    color: var(--white);
+    padding: 8px 18px;
+    border-radius: 5px;
     font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ========================================= */
+/* 4. HERO SECTION                           */
+/* ========================================= */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    /* Alteramos o caminho para assets/img/ para coincidir com o padrão das suas outras páginas */
+    background: url('../img/spain-flag-banner.jpg') center/cover no-repeat;
+    color: white; 
+    min-height: 500px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none; /* Garante que não haja bordas coloridas */
+}
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); 
+}
+
+/* ========================================= */
+/* 5. CARDS E GRID                           */
+/* ========================================= */
+.value-prop-section { padding: 80px 5%; text-align: center; }
+
+.value-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.flip-card { background: transparent; height: 320px; perspective: 1000px; }
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.flip-card-front { background: var(--accent-red); color: white; border-top: 6px solid var(--spain-yellow); }
+.flip-card-back { background: var(--primary-red); color: white; transform: rotateY(180deg); }
+
+/* ========================================= */
+/* 6. PERFIL E SIDEBAR                       */
+/* ========================================= */
+.profile-layout-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.profile-sidebar {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    height: fit-content;
+}
+
+.sidebar-button {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: none;
+    background: none;
+    text-align: left;
     font-weight: bold;
-    transition: background-color 0.3s;
-    margin-left: 20px; /* Separa do último link */
+    color: var(--text-light);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: var(--transition);
 }
 
-.auth-nav-btn:hover {
-    background-color: #d12f3b;
+.sidebar-button.active {
+    background: var(--accent-red);
+    color: var(--white);
 }
 
-/* Botão WhatsApp Flutuante */
+/* ========================================= */
+/* 7. FORMULÁRIOS                            */
+/* ========================================= */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+input:focus { border-color: var(--accent-red); outline: none; }
+
+/* ========================================= */
+/* 8. WHATSAPP E FOOTER                      */
+/* ========================================= */
 .whatsapp-float {
     position: fixed;
-    width: 65px;
-    height: 65px;
-    bottom: 25px;
-    right: 25px;
-    background-color: #fdfdfd;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background: #ffffff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     z-index: 999;
-    transition: transform 0.2s ease;
+    transition: var(--transition);
 }
 
-.whatsapp-float img {
-    width: 38px;
-    height: 38px;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-}
-
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float img { width: 35px; }
 
 /* ========================================= */
-/* 3. ANIMAÇÕES (KEYFRAMES)                  */
+/* 8. RODAPÉ (FOOTER) PROFISSIONAL           */
 /* ========================================= */
-
-/* Animação para a Página SOBRE */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+footer {
+    background: #1a1a1a; /* Tom de grafite mais moderno que o preto puro */
+    color: var(--white);
+    padding: 60px 5% 20px;
+    margin-top: 50px;
+    border-top: 4px solid var(--primary-red);
 }
 
-/* Animação para a Página LOJA */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
 }
 
-/* Animação de Fade-in para o conteúdo das abas */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-
-/* ========================================= */
-/* 4. PÁGINA INICIAL (INDEX.HTML)            */
-/* ========================================= */
-
-/* Hero Section (Banner) */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: url('../img/spain-flag-banner.jpg') center/cover no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: #AA151B;
-    color: white; 
-    max-height: 500px; 
-    overflow: hidden;
-}
-
-.hero h2 {
-    font-size: 42px;
+.footer-section h3 {
+    color: var(--spain-yellow);
+    font-size: 1.2rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
-}
-
-/* Seção de Valor */
-.value-prop-section {
-    background: #fcfcfc; 
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.value-prop-section h2 {
-    font-size: 38px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.value-prop-section p {
-    font-size: 19px;
-    color: #555;
-    margin-bottom: 60px;
-}
-
-.secondary-btn {
-    background: #333; 
-    color: white;
-    margin-top: 20px;
-}
-
-.secondary-btn:hover {
-    background: #555;
-}
-
-/* Card Flip 3D */
-.value-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.flip-card {
-    background-color: transparent;
-    width: 100%;
-    height: 300px;
-    perspective: 1000px; 
-}
-
-.flip-card-inner {
     position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s; 
-    transform-style: preserve-3d;
+    padding-bottom: 10px;
 }
 
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
+/* Linha decorativa abaixo dos títulos do rodapé */
+.footer-section h3::after {
+    content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(250, 248, 248, 0.08);
-    border-top: 5px solid #e63946;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--accent-red);
 }
 
-.flip-card-front h3 {
-    color: #e63946;
-    font-size: 24px;
-    margin-bottom: 5px;
-}
-.flip-card-front p {
-    color: #888;
-    font-size: 16px;
-}
-
-.flip-card-back {
-    transform: rotateY(180deg);
-    background: #e63946;
-    color: white;
-    padding: 25px;
-    justify-content: space-around;
-}
-
-.flip-card-back h3 {
-    color: white;
-    font-size: 20px;
-    margin-top: 0;
-}
-
-.flip-card-back p {
-    color: #eee;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-.small-btn {
-    background: white;
-    color: #e63946;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
+.footer-section p, 
+.footer-section li {
     font-size: 14px;
-    align-self: flex-start;
-    margin-top: 15px;
-    transition: background 0.2s;
-}
-
-.small-btn:hover {
-    background: #f7f7f7;
-}
-/* ========================================= */
-/* 4. PÁGINA INICIAL (INDEX.HTML)            */
-/* ========================================= */
-
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: url('../img/spain-flag-banner.jpg') center/cover no-repeat;
-    background-attachment: fixed;
-    background-color: #AA151B;
-    color: white;
-    max-height: 500px;
-}
-
-.value-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.flip-card {
-    height: 300px;
-    perspective: 1000px;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top: 5px solid #F1BF00; /* Borda amarela seguindo o modelo */
-}
-
-/* CORREÇÃO DEFINITIVA: Forçando letras brancas em ambos os lados */
-.flip-card-front {
-    background: #e63946; /* Vermelho para destacar letras brancas */
-}
-
-.flip-card-back {
-    transform: rotateY(180deg);
-    background: #AA151B; /* Vermelho escuro no verso */
-}
-
-/* Este seletor garante que h3 e p dentro dos cards ignorem o preto global */
-.flip-card-front h3, .flip-card-back h3 {
-    color: #F1BF00 !important; /* Títulos em amarelo */
-    margin-bottom: 10px;
-}
-
-.flip-card-front p, .flip-card-back p {
-    color: #ffffff !important; /* Descrições em branco */
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-
-/* ========================================= */
-/* 5. PÁGINA SERVIÇOS (SERVICES.HTML)        */
-/* ========================================= */
-.services-container {
-    padding: 60px 20px;
-    max-width: 1100px;
-    margin: auto;
-    text-align: center;
-}
-
-.service-intro {
-    max-width: 700px;
-    margin: 15px auto 50px;
-    font-size: 18px;
+    color: #cccccc; /* Cinza claro para melhor leitura */
+    margin-bottom: 12px;
     line-height: 1.6;
-    color: #666;
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
+.footer-section ul {
+    list-style: none;
 }
 
-.service-card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    border-top: 5px solid #e63946;
-    text-align: left;
+.footer-section ul li a {
+    text-decoration: none;
+    color: #cccccc;
+    transition: var(--transition);
 }
 
-.service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+.footer-section ul li a:hover {
+    color: var(--spain-yellow);
+    padding-left: 5px; /* Efeito sutil de movimento */
 }
 
-.service-card h3 {
-    color: #e63946;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 24px;
+.footer-bottom {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid #333;
+    font-size: 13px;
+    color: #888;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 768px) {
+    .footer-content {
+        text-align: center;
+    }
+    .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 /* ========================================= */
-/* 6. PÁGINA SOBRE (ABOUT.HTML)              */
+/* 9. RESPONSIVIDADE                         */
+/* ========================================= */
+@media (max-width: 992px) {
+    .profile-layout-grid { grid-template-columns: 1fr; }
+    .hero h2 { font-size: 36px; }
+}
+
+@media (max-width: 768px) {
+    nav { flex-direction: column; padding: 20px; }
+    nav ul { flex-wrap: wrap; justify-content: center; margin-top: 15px; gap: 10px; }
+    .story-container { flex-direction: column; align-items: center; }
+    .story-text { min-width: 100%; }
+}
+/* ========================================= */
+/* 10. PÁGINA SOBRE (ABOUT.HTML)             */
 /* ========================================= */
 
 .about-section {
-    padding: 60px 20px;
+    padding: 80px 5%; /* Ajustado para o padrão de respiro novo */
 }
 
 .about-content {
@@ -430,7 +365,7 @@ nav a.active-profile-btn { /* Estilo para o link do perfil ativo */
 
 .about-content h2 {
     font-size: 36px;
-    color: #e63946;
+    color: var(--accent-red); /* Usando variável */
     margin-bottom: 40px;
 }
 
@@ -449,8 +384,12 @@ nav a.active-profile-btn { /* Estilo para o link do perfil ativo */
     min-width: 320px;
     flex-shrink: 0; 
     text-align: center;
+    background: var(--white); /* Adicionado fundo para combinar com os cards */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
     
-    /* Animação */
+    /* Mantendo suas animações originais */
     opacity: 0; 
     animation: fadeInUp 1s ease-out forwards;
     animation-delay: 0.2s; 
@@ -461,7 +400,6 @@ nav a.active-profile-btn { /* Estilo para o link do perfil ativo */
     max-width: 350px; 
     height: auto;
     border-radius: 12px; 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
     object-fit: cover;
 }
 
@@ -470,18 +408,18 @@ nav a.active-profile-btn { /* Estilo para o link do perfil ativo */
     margin-top: 20px;
     margin-bottom: 5px; 
     text-align: center;
-    color: #333;
+    color: var(--text-dark);
 }
 
 .profile-details h3 {
     font-size: 26px;
-    color: #e63946;
+    color: var(--accent-red);
     margin: 0;
 }
 
 .profile-details p {
     font-size: 16px;
-    color: #555;
+    color: var(--text-light);
     margin: 5px 0 0;
     font-weight: 500;
 }
@@ -515,20 +453,12 @@ nav a.active-profile-btn { /* Estilo para o link do perfil ativo */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.social-icon.instagram:hover {
-    box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
-}
-
-.social-icon.youtube:hover {
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
-}
-
 /* Coluna do Texto da História */
 .story-text {
     flex: 1; 
-    min-width: 450px; 
+    min-width: 300px; /* Ajustado para melhor quebra em telas médias */
     
-    /* Animação */
+    /* Mantendo sua animação */
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
     animation-delay: 0.5s; 
@@ -538,689 +468,429 @@ nav a.active-profile-btn { /* Estilo para o link do perfil ativo */
     margin-bottom: 15px;
     line-height: 1.7;
     font-size: 17px;
+    color: var(--text-dark);
 }
 
 .story-text h3 {
-    color: #F1BF00; /* Amarelo (Gualda) da Espanha */
+    color: var(--spain-yellow); /* Usando sua cor Amarela da variável */
     margin-top: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-size: 24px;
-}
-
-
-/* ========================================= */
-/* 7. PÁGINA CONTATO (CONTACT.HTML)          */
-/* ========================================= */
-
-.contact-container h2 {
-    text-align: center;
-    font-size: 38px;
-    margin-bottom: 10px;
-    color: #e63946;
-}
-
-.contact-container p {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 19px;
-    color: #555;
-}
-
-.contact-content {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Formulário */
-.contact-form {
-    flex: 1;
-    min-width: 300px;
-    padding: 25px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    transition: border-color 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #e63946;
-    outline: none;
-}
-
-/* Informações e Mapa */
-.contact-info {
-    flex: 1;
-    min-width: 300px;
-}
-
-.contact-info h3 {
-    margin-top: 25px;
-    margin-bottom: 15px;
-    font-size: 22px;
-    color: #e63946;
-}
-
-.contact-info a.btn {
-    background: #25D366;
-    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
-    margin-bottom: 30px;
-}
-
-.contact-info a.btn:hover {
-    background: #1faf58;
-}
-
-.contact-info iframe {
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    height: 280px;
-}
-
-
-/* ========================================= */
-/* 8. PÁGINA LOJA (STORE.HTML)               */
-/* ========================================= */
-
-.coming-soon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 300px); 
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.coming-soon-box {
-    background: #ffffff;
-    padding: 50px 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
-}
-
-.coming-soon-box h2 {
-    font-size: 32px;
-    color: #e63946;
-    margin-bottom: 15px;
-}
-
-.coming-soon-box p {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 30px;
-}
-
-.gear-icon-wrapper {
-    font-size: 80px;
-    color: #333;
-    margin-bottom: 25px;
+    background: var(--primary-red); /* Adicionado destaque para combinar com o tema */
     display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
 }
 
-.gear-icon {
-    animation: spin 3s linear infinite; 
-    display: block;
-}
-
-.whatsapp-btn {
-    background: #25D366;
-    margin-top: 10px;
-}
-
-.whatsapp-btn:hover {
-    background: #1faf58;
-}
-
-
-/* ========================================= */
-/* 9. RODAPÉ (FOOTER)                        */
-/* ========================================= */
-footer {
-    background: #333;
-    color: #ffffff;
-    padding: 40px 20px 20px;
-    font-size: 14px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: 1100px;
-    margin: 0 auto 30px;
-    gap: 30px;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 200px; /* Ajustado para melhor responsividade */
-}
-
-.footer-section h3 {
-    color: #e63946;
-    margin-bottom: 15px;
-    font-size: 18px;
-    border-bottom: 1px solid #555;
-    padding-bottom: 8px;
-}
-
-.footer-section p {
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 8px;
-}
-
-.footer-section a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-section a:hover {
-    color: #e63946;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 15px;
-    border-top: 1px solid #555;
-    color: #aaa;
-}
-
-
-/* ========================================= */
-/* 10. RESPONSIVIDADE (@MEDIA QUERIES)       */
-/* ========================================= */
-
+/* Garantindo responsividade para o container de história */
 @media (max-width: 768px) {
-    /* --- Layout Geral e Sobre --- */
     .story-container {
-        flex-direction: column;
-        flex-wrap: wrap;
-    }
-    .story-image-wrapper {
-        margin-bottom: 20px;
-        width: auto;
-        min-width: auto;
-    }
-    .profile-img {
-        max-width: 80%;
-    }
-    .story-text {
-        text-align: center;
-    }
-    .story-text h3 {
-        text-align: center;
-    }
-    
-    /* --- Rodapé --- */
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .footer-section {
-        margin-bottom: 20px;
-        min-width: 100%;
-    }
-    .footer-section h3 {
-        text-align: center;
-    }
-    .footer-section ul {
-        display: flex;
         flex-direction: column;
         align-items: center;
     }
+    .story-text {
+        min-width: 100%;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Coluna do Texto da História - Agora em um quadro */
+.story-text {
+    flex: 1; 
+    min-width: 300px;
+    background: var(--white); /* Quadro branco igual à foto */
+    padding: 30px;            /* Espaçamento interno */
+    border-radius: 15px;      /* Bordas arredondadas */
+    box-shadow: var(--shadow); /* Sombra igual à da foto */
+    
+    /* Animação original mantida */
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.5s; 
 }
 
-@media (max-width: 600px) {
-    /* --- Navegação --- */
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-bottom: 10px;
-    }
-    .logo {
-        margin-bottom: 10px;
-    }
-    nav ul {
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-    
-    /* --- Hero --- */
-    .hero {
-        padding: 60px 20px;
-        max-height: 400px;
-    }
-    .hero h2 {
-        font-size: 32px;
-    }
+.story-text p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    font-size: 17px;
+    color: var(--text-dark);
+    font-weight: bold;        /* Todas as letras em negrito */
 
-    /* --- Cards --- */
-    .flip-card {
-        height: 250px;
-    }
-    .flip-card-front h3,
-    .flip-card-back h3 {
-        font-size: 20px;
-    }
-    .service-card {
+}
+.story-text h3 {
+    color: var(--spain-yellow); /* Mantém o amarelo da Espanha */
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    background: transparent;    /* Remove o fundo vermelho */
+    padding: 0;                 /* Remove o espaçamento interno do fundo */
+    display: block;             /* Garante que ocupe a linha própria */
+}
+/* ========================================= */
+/* 7. PÁGINA LOJA (STORE.HTML) - ATUALIZADO  */
+/* ========================================= */
+
+.store-container { 
+    padding: 80px 5%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    text-align: center;
+}
+
+.store-title {
+    font-size: 38px;
+    color: var(--accent-red);
+    margin-bottom: 10px;
+}
+
+.store-subtitle {
+    font-size: 18px;
+    color: var(--text-light);
+    margin-bottom: 50px;
+}
+
+.store-grid { 
+    display: flex; 
+    justify-content: center; 
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.ebook-card { 
+    background: var(--white); 
+    padding: 30px; 
+    border-radius: 15px; 
+    border-top: 6px solid var(--accent-red); 
+    box-shadow: var(--shadow);
+    max-width: 450px;
+    transition: var(--transition);
+    text-align: left; /* Alinhamento à esquerda para leitura profissional */
+}
+
+.ebook-card:hover {
+    transform: translateY(-10px);
+}
+
+.ebook-cover-container { 
+    width: 100%; 
+    border-radius: 10px; 
+    margin-bottom: 25px; 
+    overflow: hidden; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.ebook-img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+}
+
+.ebook-card:hover .ebook-img {
+    transform: scale(1.05);
+}
+
+.ebook-title {
+    font-size: 24px;
+    color: var(--primary-red);
+    margin-bottom: 15px;
+}
+
+.ebook-description {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.price-container {
+    background: #fff9e6; /* Fundo levemente amarelado para destaque */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: center;
+    border: 1px dashed var(--spain-yellow);
+}
+
+.price-value { 
+    display: block;
+    font-size: 28px; 
+    font-weight: bold; 
+    color: var(--success); 
+}
+
+.price-info { 
+    font-size: 12px; 
+    color: var(--text-light); 
+    text-transform: uppercase;
+}
+
+.learning-box {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.learning-title {
+    font-size: 16px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.learning-list {
+    list-style: none;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.learning-list li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Ajuste Responsivo */
+@media (max-width: 480px) {
+    .ebook-card {
         padding: 20px;
     }
-    .service-card h3 {
-        font-size: 20px;
+    .price-value {
+        font-size: 24px;
     }
 }
-
-
 /* ========================================= */
-/* 11. MODAL DE AUTENTICAÇÃO (LOGIN/CADASTRO) */
+/* 5. PÁGINA SERVIÇOS (SERVICES.HTML)        */
 /* ========================================= */
+
+.service-intro {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    border-left: 5px solid var(--accent-red);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Destaque para a Consultoria Completa */
+.service-card.highlight {
+    border: 2px solid var(--accent-red);
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.service-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--spain-yellow);
+    color: var(--primary-red);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.service-card h3 {
+    color: var(--primary-red);
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.service-price {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin: 20px 0;
+}
+
+.service-list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Empurra o botão para o fundo */
+}
+
+.service-list li {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .service-card.highlight {
+        transform: scale(1);
+    }
+}
 .auth-modal {
-    display: none; 
+    display: none; /* Garante que comece escondido */
     position: fixed;
-    z-index: 1000; 
+    z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.7); 
+    background-color: rgba(0,0,0,0.6);
 }
 
 .auth-modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
+    background-color: var(--white);
+    margin: 10% auto;
     padding: 30px;
-    border: 1px solid #888;
-    width: 90%; 
-    max-width: 400px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
 }
 
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+.tab-content {
+    display: none; /* Esconde todas por padrão */
 }
 
-.close-btn:hover,
-.close-btn:focus {
-    color: #e63946; 
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#auth-form input[type="email"], 
-#auth-form input[type="password"] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-#auth-submit-btn {
-    width: 100%;
-    background-color: #e63946; 
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-#auth-submit-btn:hover {
-    background-color: #d12f3b;
-}
-
-.auth-switch a {
-    color: #e63946;
-    text-decoration: none;
-    font-weight: bold;
+.tab-content.active {
+    display: block !important; /* Mostra a aba ativa */
 }
 
 /* ========================================= */
-/* 12. ESTILOS DA PÁGINA DE PERFIL (NOVO SIDEBAR) */
+/* 11. SEÇÃO DE DESTAQUES (INDEX - FEATURES) */
 /* ========================================= */
 
-.profile-page {
-    padding: 80px 20px;
-    max-width: 1100px; /* Aumentado para o layout de duas colunas */
-    margin: 0 auto;
-    min-height: 70vh; 
+.features-section {
+    padding: 80px 5%;
+    background-color: #f9f9f9; /* Fundo leve para contrastar com os cards brancos */
 }
 
-.profile-page h2 {
-    color: #1d3557; 
-    margin-bottom: 30px;
-    font-size: 2.2em;
-    font-weight: 600;
-    border-bottom: 3px solid #e63946; 
-    padding-bottom: 15px;
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    color: var(--primary-red);
+    margin-bottom: 50px;
+    font-weight: bold;
 }
 
-.profile-page p {
-    font-size: 1.1em;
-    color: #457b9d; 
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-/* NOVO: Layout de Grid (Sidebar + Conteúdo) */
-.profile-layout-grid {
+.features-grid {
     display: grid;
-    grid-template-columns: 1fr; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Sidebar (Barra Lateral de Navegação) */
-.profile-sidebar {
-    display: flex; 
+.feature-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f1faee; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    justify-content: space-between;
+    border: 1px solid #eee;
 }
 
-/* Botões da Sidebar */
-.sidebar-button {
-    text-align: left;
-    background-color: transparent;
-    border: none;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: 500;
-    color: #1d3557; 
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 6px;
+/* Efeito de destaque no card central (eBook) */
+.feature-card.highlighted {
+    border: 2px solid var(--spain-yellow);
+    transform: scale(1.05);
+    background: #fffdf5; /* Tom sutil de creme para destacar */
 }
 
-.sidebar-button:hover:not(.active) {
-    background-color: #e6394620; 
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
 
-.sidebar-button.active {
-    background-color: #e63946; 
-    color: white;
-    font-weight: 700;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.feature-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    display: block;
 }
 
-/* Área de Conteúdo Principal */
-.profile-content-area {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.profile-content-area h3 {
-    color: #e63946;
-    border-bottom: 2px solid #f1faee;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-}
-
-.profile-content-area h4 {
-    color: #1d3557;
-    margin-top: 20px;
+.feature-card h3 {
+    font-size: 24px;
+    color: var(--primary-red);
     margin-bottom: 15px;
 }
 
-/* Estilo do Formulário */
-.profile-form-grid {
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: 15px;
+.feature-card p {
+    color: var(--text-light);
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.6;
 }
 
-.profile-form-grid label {
-    font-weight: 600;
-    color: #1d3557; 
-    margin-top: 15px;
-    font-size: 0.95em;
-    display: block; 
-}
-
-.profile-form-grid input[type="email"],
-.profile-form-grid input[type="text"],
-.profile-form-grid input[type="date"],
-.profile-form-grid textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
-    transition: border-color 0.3s;
-}
-
-.profile-form-grid input:disabled {
-    background-color: #f1faee; 
-    color: #777;
-    cursor: not-allowed;
-    font-style: italic;
-}
-
-/* Botão de salvar (aproveita o estilo .btn) */
-#save-profile-btn {
-    width: 100%;
-    margin-top: 20px;
-    background-color: #457b9d; 
-    padding: 12px 25px;
-    border-radius: 6px;
-}
-
-#save-profile-btn:hover {
-    background-color: #2a6183;
-}
-
-/* Mensagem de Status (Sucesso/Erro) */
-#profile-status {
+.btn-link {
+    color: var(--accent-red);
+    text-decoration: none;
     font-weight: bold;
-    padding: 10px;
-    border-radius: 4px;
-    text-align: center;
-}
-
-/* Contagem Regressiva */
-#travel-date-section,
-#checklist-full-section {
-    padding: 0;
-    border: none;
-}
-
-.countdown-box {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f1faee; 
-    border-radius: 8px;
-    text-align: center;
-    font-size: 1.2em;
-    color: #1d3557;
-}
-
-.countdown-box p {
-    margin: 0 0 10px 0;
-    font-size: 0.9em;
-    color: #457b9d;
-}
-
-.countdown-box span {
+    font-size: 16px;
+    transition: var(--transition);
     display: inline-block;
-    font-size: 2em;
-    font-weight: bold;
-    color: #e63946; 
-    margin: 0 10px;
-    line-height: 1;
 }
 
-/* Estilo do Checklist */
-#checklist-full-section {
-    margin-top: 30px;
+.btn-link:hover {
+    color: var(--primary-red);
+    transform: translateX(5px);
 }
 
-.checklist-add-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+.social-mini-links {
+    margin-top: 15px;
+    font-size: 14px;
+    color: var(--text-light);
 }
 
-#checklist-input {
-    flex-grow: 1;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
+.social-mini-links a {
+    color: var(--accent-red);
+    text-decoration: none;
+    font-weight: 500;
 }
 
-#add-checklist-item-btn {
-    width: 120px;
-    background-color: #2a9d8f; 
+.social-mini-links a:hover {
+    text-decoration: underline;
 }
 
-#add-checklist-item-btn:hover {
-    background-color: #218679; 
-}
-
-.checklist-list {
-    list-style: none;
-    padding: 0;
-}
-
-.checklist-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px dashed #eee;
-    font-size: 1.1em;
-}
-
-.checklist-item:last-child {
-    border-bottom: none;
-}
-
-.checklist-item input[type="checkbox"] {
-    margin-right: 15px;
-    transform: scale(1.3);
-}
-
-.checklist-item label {
-    flex-grow: 1;
-    cursor: pointer;
-    font-weight: normal; 
-}
-
-.checklist-item .completed {
-    text-decoration: line-through;
-    color: #999;
-}
-
-.checklist-item .delete-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8em;
-    margin-left: 10px;
-    transition: background-color 0.2s;
-}
-
-.checklist-item .delete-btn:hover {
-    background-color: #d32f2f;
-}
-
-/* Responsividade: Desktop (Layout 2 Colunas) */
-@media (min-width: 992px) {
-    /* Layout principal do painel */
-    .profile-layout-grid {
-        grid-template-columns: 250px 1fr; 
-    }
-    
-    /* Layout do formulário dentro do painel */
-    .profile-form-grid {
-        grid-template-columns: 1fr 1fr; 
-    }
-    
-    /* O endereço e o botão de salvar ocupam 2 colunas no desktop */
-    .profile-form-grid label[for="profile-address"],
-    .profile-form-grid textarea,
-    #save-profile-btn,
-    #profile-status {
-        grid-column: 1 / 3;
-        width: 100%;
-        text-align: center;
-    }
-}
-
-
-/* Responsividade: Mobile (Sidebar vira Bloco) */
-@media (max-width: 991px) {
-    .profile-sidebar {
-        flex-direction: row; /* Botões ficam lado a lado */
-        overflow-x: auto; /* Permite rolar se houver muitos botões */
-        padding: 10px;
-        white-space: nowrap;
-    }
-    
-    .profile-sidebar::-webkit-scrollbar {
-        display: none; /* Esconde a barra de rolagem */
-    }
-    
-    .sidebar-button {
-        flex-shrink: 0; /* Evita que os botões diminuam muito */
-        margin-right: 5px;
-    }
-}
-
-/* Garante que o botão fique visível no mobile */
+/* Ajuste Responsivo */
 @media (max-width: 768px) {
-    .auth-nav-btn {
-        width: 100%;
-        margin-top: 10px;
-        margin-left: 0;
+    .feature-card.highlighted {
+        transform: scale(1); /* Remove o zoom em celulares para não quebrar o layout */
+        margin: 10px 0;
     }
-    .story-text {
-        min-width: 100%;
+    
+    .section-title {
+        font-size: 28px;
     }
 }
