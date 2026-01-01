@@ -10,16 +10,11 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-ZZWR62J7CC');
     </script>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-    <meta name="description"
-        content="Conheça a história de Matheus Conrado, criador da Conexão Espanha, e como a experiência pessoal transformou-se em suporte prático para novos imigrantes." />
-    <meta name="keywords"
-        content="Matheus Conrado, YouTuber Espanha, criador de conteúdo, história de imigrante, sobre Conexão Espanha" />
-    <meta name="author" content="Matheus Conrado - Conexão Espanha" />
+    <meta name="description" content="Conheça a história de Matheus Conrado, criador da Conexão Espanha." />
 </head>
 
 <body>
@@ -30,32 +25,30 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="services.html">Serviços</a></li>
-                <li><a href="about.html" class="active">Sobre</a></li>
+                <li><a href="about.html">Sobre</a></li>
                 <li><a href="contact.html">Contato</a></li>
                 <li><a href="store.html">Loja</a></li>
                 <li><a href="profile.html">Meu Perfil</a></li>
+
                 <li><button id="open-auth-modal" class="auth-nav-btn">Login / Cadastro</button></li>
+                <li><button id="logout-btn" class="auth-nav-btn" style="display: none;">Sair</button></li>
             </ul>
         </nav>
     </header>
 
     <section class="about-section">
         <div class="container about-content">
-
             <h2>A Minha História: O Recomeço na Espanha</h2>
 
             <div class="story-container">
-
                 <div class="story-image-wrapper">
-                    <img src="assets/img/profile.png" alt="Foto do Fundador/Fundadora" class="profile-img">
-
+                    <img src="assets/img/profile.png" alt="Matheus Conrado" class="profile-img">
                     <div class="profile-details">
                         <h3>Matheus Conrado</h3>
                         <p>YouTuber / Criador de Conteúdo Digital</p>
                     </div>
-
                     <div class="social-links">
-                        <a href="https://www.instagram.com/matheusconrado_es/" target="_blank"
+                        <a href="https://www.instagram.com/conrado_es/" target="_blank"
                             class="social-icon instagram">
                             <img src="assets/img/instagram.png" alt="Instagram">
                         </a>
@@ -66,48 +59,38 @@
                 </div>
 
                 <div class="story-text">
-                    <p>
-                        Quando eu cheguei à Espanha, muita coisa para mim foi na raça, no susto e no famoso “aprendendo
-                        com
-                        os perrengues”. Faltavam informações claras, práticas e reais sobre o que fazer logo após entrar
-                        no
-                        país — e isso me fez perder tempo, dinheiro e energia.
-                    </p>
-
-                    <p>
-                        A Conexão Espanha nasceu para suprir essa falta, oferecendo: dicas valiosas, cidades boas para
-                        imigrar, mapas, lugares onde encontrar aluguel, contatos de quem aluga quartos e informações
-                        reais
-                        do dia a dia de um imigrante.
-                    </p>
-
+                    <p>Quando eu cheguei à Espanha, muita coisa para mim foi na raça, no susto e no famoso “aprendendo
+                        com os perrengues”. Faltavam informações claras e práticas sobre o que fazer logo após entrar no
+                        país.</p>
+                    <p>A Conexão Espanha nasceu para suprir essa falta, oferecendo dicas valiosas, mapas e informações
+                        reais do dia a dia de um imigrante.</p>
                     <h3>Meu objetivo é simples:</h3>
-                    <p>
-                        Facilitar sua chegada, diminuir seus medos e encurtar o caminho que eu tive que percorrer
-                        sozinho.
-                    </p>
+                    <p>Facilitar sua chegada, diminuir seus medos e encurtar o caminho que eu tive que percorrer
+                        sozinho.</p>
 
-                    <a href="contact.html" class="btn" style="margin-top: 20px;">Fale comigo e comece a planejar!</a>
+                    <a href="https://wa.me/5551993507414?text=Olá!%20Vi%20sua%20história%20no%20site%20e%20gostaria%20de%20conversar%20sobre%20o%20planejamento%20da%20minha%20mudança."
+                        target="_blank" class="btn" style="margin-top: 20px;">Fale comigo e comece a planejar!</a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <a href="https://wa.me/+5551993507414" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/5551993507414" target="_blank" class="whatsapp-float">
         <img src="assets/img/whatsapp.png" alt="WhatsApp">
     </a>
 
-    <div id="auth-modal" class="auth-modal">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/auth.js"></script>
+
+    <div id="auth-modal" class="auth-modal" style="display:none;">
         <div class="auth-modal-content">
             <span class="close-btn">&times;</span>
             <h2 id="auth-title">Faça Login</h2>
-            
+
             <form id="auth-form">
                 <input type="email" id="auth-email" placeholder="E-mail" required>
                 <input type="password" id="auth-password" placeholder="Senha" required>
-                
-                <button type="submit" id="auth-submit-btn">Entrar</button>
+                <button type="submit" id="auth-submit-btn" class="btn btn-primary">Entrar</button>
             </form>
 
             <p class="auth-switch">
@@ -118,18 +101,12 @@
             </p>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <script src="assets/js/auth.js"></script> 
-    
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
                 <h3>Conexão Espanha</h3>
                 <p>Facilitando sua jornada de imigração para a Espanha com suporte local e experiência real.</p>
             </div>
-
             <div class="footer-section links">
                 <h3>Navegação Rápida</h3>
                 <ul>
@@ -140,7 +117,6 @@
                     <li><a href="store.html">Loja</a></li>
                 </ul>
             </div>
-
             <div class="footer-section contact">
                 <h3>Contato</h3>
                 <p>📍 Base Principal: Elche, Espanha</p>
@@ -148,9 +124,8 @@
                 <p>📞 WhatsApp: +55 51 99350-7414</p>
             </div>
         </div>
-
         <div class="footer-bottom">
-            &copy; 2025 Conexão Espanha | Todos os direitos reservados.
+            &copy; 2026 Conexão Espanha | Todos os direitos reservados.
         </div>
     </footer>
 </body>

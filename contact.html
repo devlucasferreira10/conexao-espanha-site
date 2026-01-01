@@ -5,14 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contato | Conexão Espanha</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZZWR62J7CC"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-ZZWR62J7CC');
-    </script>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 </head>
@@ -26,70 +18,71 @@
                 <li><a href="index.html">Início</a></li>
                 <li><a href="services.html">Serviços</a></li>
                 <li><a href="about.html">Sobre</a></li>
-                <li><a href="contact.html" class="active">Contato</a></li>
+                <li><a href="contact.html">Contato</a></li>
                 <li><a href="store.html">Loja</a></li>
                 <li><a href="profile.html">Meu Perfil</a></li>
+
                 <li><button id="open-auth-modal" class="auth-nav-btn">Login / Cadastro</button></li>
+                <li><button id="logout-btn" class="auth-nav-btn" style="display: none;">Sair</button></li>
             </ul>
         </nav>
     </header>
 
-    <section class="contact-container">
+    <main class="contact-container">
         <h2>Entre em Contato</h2>
-        <p>Estamos aqui para ajudar no seu processo de imigração para a Espanha.</p>
+        <p>Tire suas dúvidas ou agende uma consultoria personalizada com nossa equipe.</p>
 
         <div class="contact-content">
+            <form action="#" class="contact-form">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
 
-            <form class="contact-form" action="https://formsubmit.co/conradoferreira102@gmail.com" method="POST">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required />
 
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="box">
+                <label for="mensagem">Como podemos ajudar?</label>
+                <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..."
+                    required></textarea>
 
-                <label>Nome:</label>
-                <input type="text" name="nome" required>
-
-                <label>Email:</label>
-                <input type="email" name="email" required>
-
-                <label>Mensagem:</label>
-                <textarea name="mensagem" rows="5" required></textarea>
-
-                <button type="submit" class="btn">Enviar</button>
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
             </form>
 
             <div class="contact-info">
-                <h3>Fale pelo WhatsApp</h3>
-                <a href="https://wa.me/+5551993507414" target="_blank" class="btn">
-                    Abrir WhatsApp
+                <h3>Canais Diretos</h3>
+                <p>Prefere um atendimento instantâneo? Fale conosco pelo WhatsApp ou e-mail.</p>
+
+                <a href="https://wa.me/+5551993507414" target="_blank" class="btn btn-primary"
+                    style="background-color: #25D366; border: none;">
+                    Chamar no WhatsApp
                 </a>
 
-                <h3>Localização</h3>
-                <p>Atendimento em toda a Espanha. Base principal: Elche.</p>
+                <div style="margin-top: 20px;">
+                    <p><strong>📧 E-mail:</strong> conradoferreira102@gmail.com</p>
+                    <p><strong>📍 Localização:</strong> Elche, Espanha</p>
+                </div>
 
+                <h3>Onde Estamos</h3>
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.1430803160544!2d-0.7127287239289612!3d38.26535197966939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63b6630a0536d9%3A0xbcd87481a5d51a93!2sElche%2C%20Alicante!5e0!3m2!1spt-BR!2ses!4v1735844450000"
-                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50063.85871370213!2d-0.7303021877484469!3d38.266209506740665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63b46c64606771%3A0x60098f99e3f16d0!2sElche%2C%20Alicante%2C%20Espanha!5e0!3m2!1spt-BR!2sbr!4v1704000000000!5m2!1spt-BR!2sbr"
+                    width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy">
                 </iframe>
-
             </div>
-
         </div>
-    </section>
+    </main>
 
     <a href="https://wa.me/+5551993507414" target="_blank" class="whatsapp-float">
         <img src="assets/img/whatsapp.png" alt="WhatsApp">
     </a>
 
-    <div id="auth-modal" class="auth-modal">
+    <div id="auth-modal" class="auth-modal" style="display:none;">
         <div class="auth-modal-content">
             <span class="close-btn">&times;</span>
             <h2 id="auth-title">Faça Login</h2>
-            
+
             <form id="auth-form">
                 <input type="email" id="auth-email" placeholder="E-mail" required>
                 <input type="password" id="auth-password" placeholder="Senha" required>
-                
-                <button type="submit" id="auth-submit-btn">Entrar</button>
+                <button type="submit" id="auth-submit-btn" class="btn btn-primary">Entrar</button>
             </form>
 
             <p class="auth-switch">
@@ -100,12 +93,6 @@
             </p>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <script src="assets/js/auth.js"></script> 
-
-
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
@@ -121,7 +108,6 @@
                     <li><a href="about.html">Sobre</a></li>
                     <li><a href="contact.html">Contato</a></li>
                     <li><a href="store.html">Loja</a></li>
-                    
                 </ul>
             </div>
 
@@ -134,9 +120,12 @@
         </div>
 
         <div class="footer-bottom">
-            © 2025 Conexão Espanha | Todos os direitos reservados.
+            &copy; 2026 Conexão Espanha | Todos os direitos reservados.
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/auth.js"></script>
 </body>
 
 </html>
